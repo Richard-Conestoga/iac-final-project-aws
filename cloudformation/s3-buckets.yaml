@@ -1,0 +1,39 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: S3 buckets with versioning and public access block
+
+Resources:
+  AppBucket1:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: 8903530-app1
+      VersioningConfiguration:
+        Status: Enabled
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+
+  AppBucket2:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: 8903530-app2
+      VersioningConfiguration:
+        Status: Enabled
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+
+  LogsBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: 8903530-logs
+      VersioningConfiguration:
+        Status: Enabled
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true

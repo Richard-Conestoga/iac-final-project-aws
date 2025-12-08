@@ -1,0 +1,72 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "RDS MySQL for 8903530 final project"
+
+Parameters:
+  DBInstanceClass:
+    Type: String
+    Default: db.t3.micro
+    AllowedValues:
+      - db.t3.micro
+      - db.t3.small
+    Description: "RDS instance class"
+
+  DBName:
+    Type: String
+    Default: appdb
+    AllowedPattern: "[a-zA-Z][a-zA-Z0-9_]{0,62}"
+    Description: "Database name"
+
+  MasterUsername:
+    Type: String
+    Default: dbadmin
+    AllowedPattern: "[a-zA-Z][a-zA-Z0-9_]{0,15}"
+    Description: "Master username"
+
+  MasterUserPassword:
+    Type: String
+    NoEcho: true
+    MinLength: 8
+    MaxLength: 41
+    Description: "Master user password"
+
+Resources:
+  RDSSubnetGroup:
+    Type: AWS::RDS::DBSubnetGroup
+    Properties:
+      DBSubnetGroupDescription: "RDS subnet group"
+      SubnetIds:
+        - subnet-055126573bbfcbea4
+        - subnet-0e7f98af0d231a4e9
+
+  RDSSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: "Allow MySQL from anywhere (project only)"
+      VpcId: vpc-00e82d551fd213742
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 3306
+          ToPort: 3306
+          CidrIp: 0.0.0.0/0
+
+  MyRDSInstance:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      DBInstanceClass: !Ref DBInstanceClass
+      Engine: mysql
+      AllocatedStorage: 20
+      DBName: !Ref DBName
+      MasterUsername: !Ref MasterUsername
+      MasterUserPassword: !Ref MasterUserPassword
+      PubliclyAccessible: true
+      VPCSecurityGroups:
+        - !Ref RDSSecurityGroup
+      DBSubnetGroupName: !Ref RDSSubnetGroup
+      BackupRetentionPeriod: 0
+      DeletionProtection: false
+      MultiAZ: false
+
+Outputs:
+  RDSEndpoint:
+    Description: "RDS endpoint address"
+    Value: !GetAtt MyRDSInstance.Endpoint.Address

@@ -1,0 +1,22 @@
+# ---- Terraform ----
+# Local .terraform directories
+terraform/**/.terraform/
+terraform/.terraform/
+
+# Terraform state files
+terraform/*.tfstate
+terraform/*.tfstate.*
+
+# Crash logs
+terraform/crash.log
+terraform/crash.*.log
+
+# Variable files that may contain secrets
+terraform/*.tfvars
+terraform/*.tfvars.json
+
+# Terraform lock file (can be committed if you prefer)
+terraform/.terraform.lock.hcl
+
+# Terraform plan files
+terraform/*tfplan*
