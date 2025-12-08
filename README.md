@@ -1,4 +1,4 @@
-# Cloud Architecture and IaC Final Project on AWS
+# Cloud Architecture and IaC - Final Project on AWS
 
 This repository contains an Infrastructure as Code (IaC) project implementing AWS infrastructure using **Terraform** and **AWS CloudFormation**.  
 The goal is to provision private and secure storage, compute, and database resources in an automated, modular, and reusable way.
