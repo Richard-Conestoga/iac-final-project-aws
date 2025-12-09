@@ -5,7 +5,7 @@ Resources:
   AppBucket1:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: 8903530-app1
+      BucketName: 8903530-cf-app1
       VersioningConfiguration:
         Status: Enabled
       PublicAccessBlockConfiguration:
@@ -17,7 +17,7 @@ Resources:
   AppBucket2:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: 8903530-app2
+      BucketName: 8903530-cf-app2
       VersioningConfiguration:
         Status: Enabled
       PublicAccessBlockConfiguration:
@@ -29,7 +29,7 @@ Resources:
   LogsBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: 8903530-logs
+      BucketName: 8903530-cf-logs
       VersioningConfiguration:
         Status: Enabled
       PublicAccessBlockConfiguration:

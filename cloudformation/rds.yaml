@@ -35,14 +35,14 @@ Resources:
     Properties:
       DBSubnetGroupDescription: "RDS subnet group"
       SubnetIds:
-        - subnet-055126573bbfcbea4
-        - subnet-0e7f98af0d231a4e9
+        - subnet-0a6dfc92616996300
+        - subnet-0d9c3fb099b926632
 
   RDSSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
       GroupDescription: "Allow MySQL from anywhere (project only)"
-      VpcId: vpc-00e82d551fd213742
+      VpcId: vpc-0134cd6a511ec2fb0
       SecurityGroupIngress:
         - IpProtocol: tcp
           FromPort: 3306
