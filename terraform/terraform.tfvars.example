@@ -1,0 +1,22 @@
+# Copy this file to terraform.tfvars and replace placeholder values
+# with real, project-specific values. Do NOT commit terraform.tfvars.
+
+aws_region      = "us-east-1"
+
+# EC2 configuration
+ec2_ami_id      = "ami-0123456789abcdef0"   # Example AMI ID; replace with a valid one
+ec2_instance_type = "t3.micro"
+
+# RDS configuration
+db_name         = "appdb"
+db_username     = "dbadmin"
+db_password     = "ChangeMe123!"           # Use a strong password in real terraform.tfvars
+
+# S3 bucket name prefix
+bucket_prefix   = "1234567"                # Use a prefix that is unique in AWS system
+
+# VPC and subnet CIDRs (example values)
+vpc_cidr_block        = "10.0.0.0/16"
+public_subnet_cidr_a  = "10.0.1.0/24"
+public_subnet_cidr_b  = "10.0.2.0/24"
+

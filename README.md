@@ -45,7 +45,17 @@ This demonstrates the ability to define and deploy AWS infrastructure declarativ
 
 ```
 
-> Note: File names may differ slightly depending on how they were organized locally, but the above is the intended structure.
+### Note on Terraform file layout
+
+The project follows the instructor’s guidance conceptually:
+
+- `main.tf` – main Terraform configuration (+ AWS provider block)
+- `variables.tf` – input variable definitions
+- `terraform.tfvars` – variable values (equivalent to the suggested `vars.tfvars`)
+- `backend.tf` – backend configuration
+
+The AWS `provider` block is defined in `main.tf` instead of a separate `provider.tf`, but the behavior is identical because Terraform loads all `.tf` files in the directory as a single configuration.
+
 
 ---
 
@@ -210,6 +220,9 @@ aws cloudformation describe-stacks \
 
 From the Terraform project directory:
 
+1. Copy `terraform/terraform.tfvars.example` to `terraform/terraform.tfvars`.
+2. Replace placeholder values (AMI ID, DB password, etc.) with real ones.
+
 ```
 
 terraform init
@@ -218,7 +231,6 @@ terraform apply
 
 ```
 
-- Adjust values in `terraform.tfvars` (e.g., AMI ID, instance type, DB username/password).
 - To tear down all Terraform-managed resources:
 
 ```
